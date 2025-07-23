@@ -37,7 +37,7 @@
 - `style.css` — стили
 
 ## 🖼️ Скриншот
-
+![](https://github.com/ra9mls/morse-trainer-light/blob/main/Screenshot.png)
 
 ---
 
