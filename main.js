@@ -74,6 +74,7 @@ function updateFeedback(stateArr) {
     const span = document.createElement('span');
     span.className = 'feedback-symbol';
     span.textContent = currentMorse[i];
+    span.setAttribute('data-symbol', currentMorse[i]);
     if (stateArr) {
       if (stateArr[i] === 'correct') span.classList.add('correct');
       else if (stateArr[i] === 'incorrect') span.classList.add('incorrect');

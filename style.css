@@ -97,6 +97,11 @@ h1 {
   }
   .feedback-symbol {
     font-size: 1.2rem;
-    padding: 2px 6px;
+    padding: 2px 9px;
+  }
+  .feedback-symbol[data-symbol="-"] {
+    letter-spacing: 4px;
+    font-weight: 700;
+    font-size: 1.5rem;
   }
 } 
