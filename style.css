@@ -50,7 +50,7 @@ h1 {
 }
 .feedback-symbol {
   font-size: 2rem;
-  padding: 2px 8px;
+  padding: 2px 12px;
   border-radius: 6px;
   background: #222;
   border: 2px solid #444;
@@ -97,6 +97,6 @@ h1 {
   }
   .feedback-symbol {
     font-size: 1.2rem;
-    padding: 2px 4px;
+    padding: 2px 6px;
   }
 } 
