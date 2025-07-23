@@ -188,6 +188,69 @@ function handleInput(isDash) {
   }
 }
 
+// Touch-кнопка для мобильных
+const touchBtn = document.getElementById('touch-btn');
+
+function isTouchDevice() {
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+}
+
+if (isTouchDevice()) {
+  touchBtn.style.display = '';
+}
+
+let touchPressStart = 0;
+
+touchBtn?.addEventListener('touchstart', (e) => {
+  if (!allowInput || pressStart !== 0) return;
+  e.preventDefault();
+  pressStart = Date.now();
+  touchPressStart = pressStart;
+  startTone();
+  // Анимация нажатия
+  touchBtn.style.background = '#1e2a46';
+  touchBtn.style.boxShadow = '0 1px 2px #0006';
+});
+
+touchBtn?.addEventListener('touchend', (e) => {
+  if (!allowInput || touchPressStart === 0) return;
+  e.preventDefault();
+  const duration = Date.now() - touchPressStart;
+  pressStart = 0;
+  touchPressStart = 0;
+  stopTone();
+  // Анимация отпускания
+  touchBtn.style.background = '#3c8cff';
+  touchBtn.style.boxShadow = '0 2px 8px #0003';
+  if (duration < DOT_MAX) {
+    handleInput(false); // точка
+  } else if (duration < MAX_PRESS) {
+    handleInput(true); // тире
+  } else {
+    stateArr[currentIndex] = 'incorrect';
+    updateFeedback(stateArr);
+    vibrate(200);
+    if (!retry) {
+      retry = true;
+      setTimeout(() => {
+        stateArr[currentIndex] = 'active';
+        updateFeedback(stateArr);
+      }, 500);
+    } else {
+      handleFail();
+    }
+  }
+});
+
+touchBtn?.addEventListener('touchcancel', (e) => {
+  // Сброс анимации и звука при отмене
+  pressStart = 0;
+  touchPressStart = 0;
+  stopTone();
+  touchBtn.style.background = '#3c8cff';
+  touchBtn.style.boxShadow = '0 2px 8px #0003';
+});
+
 window.addEventListener('keydown', (e) => {
   if (e.code === 'Space' && allowInput && pressStart === 0) {
     pressStart = Date.now();
