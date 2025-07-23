@@ -55,6 +55,10 @@ h1 {
   background: #222;
   border: 2px solid #444;
   transition: background 0.2s, border 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .feedback-symbol.correct {
   background: #1e4620;
@@ -99,7 +103,7 @@ h1 {
     font-size: 1.2rem;
     padding: 2px 9px;
     min-width: 38px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;

@@ -68,13 +68,24 @@ function showNewLetter() {
   }, 1000);
 }
 
+function getMorseSVG(symbol) {
+  if (symbol === '.') {
+    // SVG круг (точка)
+    return `<svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="6" fill="#ffd700"/></svg>`;
+  } else if (symbol === '-') {
+    // SVG длинный прямоугольник (тире)
+    return `<svg width="32" height="12" viewBox="0 0 32 12" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="28" height="6" rx="3" fill="#ffd700"/></svg>`;
+  }
+  return symbol;
+}
+
 function updateFeedback(stateArr) {
   feedbackEl.innerHTML = '';
   for (let i = 0; i < currentMorse.length; i++) {
     const span = document.createElement('span');
     span.className = 'feedback-symbol';
-    span.textContent = currentMorse[i];
     span.setAttribute('data-symbol', currentMorse[i]);
+    span.innerHTML = getMorseSVG(currentMorse[i]);
     if (stateArr) {
       if (stateArr[i] === 'correct') span.classList.add('correct');
       else if (stateArr[i] === 'incorrect') span.classList.add('incorrect');
