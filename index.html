@@ -15,12 +15,18 @@
         <span id="morse-code" class="morse"></span>
       </div>
       <div id="morse-feedback" class="feedback"></div>
-      <div class="info">
-        <span>⏱️ <span id="timer">10</span> сек</span>
-        <span>🎯 Счет: <span id="score">0</span></span>
-      </div>
+          <div class="info">
+      <span>⏱️ <span id="timer">10</span> сек</span>
+      <span>🎯 Счет: <span id="score">0</span></span>
+      <span>⚡ WPM: <span id="wpm">7</span></span>
+    </div>
     </div>
     <button id="touch-btn" style="display:none; margin: 18px 10px 0 10px; width: calc(100% - 20px); height: 56px; font-size: 1.3rem; border-radius: 12px; background: #3c8cff; color: #fff; border: none; box-shadow: 0 2px 8px #0003; transition: background 0.2s, box-shadow 0.2s;">Ввод (точка/тире)</button>
+    <div class="volume-control">
+      <label for="volume">Громкость: </label>
+      <input type="range" id="volume" min="0" max="100" value="50" step="1">
+      <span id="volume-value">50%</span>
+    </div>
     <div class="instructions">
       <p>Пробел коротко — точка (.)<br>Пробел долго — тире (-)</p>
     </div>
